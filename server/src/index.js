@@ -4,17 +4,16 @@ import dotenv from "dotenv"
 import bodyParser from 'body-parser'
 import WebRoute from './routes/web'
 import connectDB from './config/connect'
+var cors = require('cors')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 dotenv.config()
-
-
+app.use(cors())
 WebRoute(app)
 connectDB()
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 
-
-
-let PORT = 8080
+let PORT = 9999
 app.listen(PORT, () => {
     console.log('server started with port: ', PORT);
 })

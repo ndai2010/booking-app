@@ -25,7 +25,7 @@ const CreateNewHotel = async (data) => {
         }
     })
 }
-const UpdateHotel = async (data) => {
+const UpdateHotel = async (data, id) => {
     return new Promise(async (resolve, reject) => {
         try {
             await db.Hotels.update({
@@ -40,6 +40,28 @@ const UpdateHotel = async (data) => {
                 rooms: data.rooms,
                 cheapestPrice: data.cheapestPrice,
                 featured: data.featured
+            },
+                {
+                    where: {
+                        id: id
+                    }
+                })
+            resolve({
+                errCode: 0,
+                Message: 'Upadate success'
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    })
+}
+const DeleteHotel = async (id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await db.Hotels.destroy({
+                where: {
+                    id: id
+                }
             })
             resolve({
                 errCode: 0,
@@ -50,7 +72,24 @@ const UpdateHotel = async (data) => {
         }
     })
 }
+const GetAllHotels = async () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const data = []
+            data = await db.Hotels.findAll()
+            resolve({
+                errCode: 0,
+                Message: 'Get all success',
+                data: data
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    })
+}
 module.exports = {
     CreateNewHotel: CreateNewHotel,
-    UpdateHotel: UpdateHotel
+    UpdateHotel: UpdateHotel,
+    DeleteHotel: DeleteHotel,
+    GetAllHotels: GetAllHotels
 }
