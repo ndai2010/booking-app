@@ -1,6 +1,8 @@
 import db from "../models"
 import bcrypt from 'bcryptjs'
+import Jwt from "jsonwebtoken"
 const salt = bcrypt.genSaltSync(10)
+
 const CheckEmail = async (email) => {
     try {
         if (email) {
@@ -60,6 +62,48 @@ const Register = async (body) => {
         }
     })
 }
+const Login = async (body) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const user = await db.Users.findOne({
+                where: {
+                    email: body.email
+                }
+            })
+
+            const isPassword = bcrypt.compareSync(body.password, user.password)
+
+
+            if (!user) {
+                resolve({
+                    errCode: 400,
+                    message: 'Your email is not found !'
+                })
+            } else {
+
+                if (!isPassword) {
+                    resolve({
+                        errCode: 400,
+                        message: 'Wrong password!'
+                    })
+                } else {
+                    const token = Jwt.sign({
+                        id: user.id, isAdmin: user.isAdmin
+                    }, process.env.JWT)
+                    resolve({
+                        token: token,
+                        errCode: 0,
+                        message: 'Login is success !'
+                    })
+                }
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    })
+}
 module.exports = {
-    Register: Register
+    Register: Register,
+    Login: Login
 }

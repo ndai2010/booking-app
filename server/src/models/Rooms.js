@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     Rooms.init({
+        hotelId: DataTypes.INTEGER,
         title: DataTypes.STRING,
         price: DataTypes.INTEGER,
         maxPeople: DataTypes.INTEGER,
