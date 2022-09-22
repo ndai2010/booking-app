@@ -1,0 +1,53 @@
+.item-container {
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #fff;
+
+    .description {
+        padding: 20px;
+
+        .header {
+            text-transform: uppercase;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .body {
+            font-size: 15px;
+
+            span {
+                color: #4FA580;
+            }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+
+            .button-booking {
+                h5 {
+                    padding: 15px 20px;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    background-color: #4FA580;
+                    color: #fff;
+                }
+            }
+
+            .price {
+                text-align: right;
+
+                h3 {
+                    margin: 0;
+                    color: #4FA580;
+                }
+
+                span {
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
