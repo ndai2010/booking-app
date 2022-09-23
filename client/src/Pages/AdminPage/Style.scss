@@ -1,0 +1,12 @@
+.admin-container {
+    display: flex;
+
+    .side-bar {
+        flex: 1;
+        min-height: 100vh;
+    }
+
+    .admin-content {
+        flex: 5;
+    }
+}
