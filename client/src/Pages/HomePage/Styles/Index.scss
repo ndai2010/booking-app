@@ -60,3 +60,86 @@
         }
     }
 }
+
+.service-section {
+    .content {
+        .item {
+            display: flex;
+
+            img {
+                max-width: 100%;
+            }
+
+            p {
+                font-size: 14px;
+                color: #6b6b6b;
+                font-weight: 400;
+                line-height: 25px;
+                padding-left: 0px;
+                margin: 0 0 10px;
+            }
+
+            .section-title {
+                h2 {
+                    color: #1ba47f;
+                    font-size: 17px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+
+                h3 {
+                    color: #252525;
+                    font-size: 23px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    padding-top: 0;
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .top-content {
+            .description {
+                overflow: hidden;
+                text-align: left;
+                padding-top: 70px;
+                padding-left: 90px;
+
+                .section-content {
+                    display: flex;
+
+                    .services-box {
+                        h4 {
+                            font-size: 15px !important;
+                            color: #252525;
+                            font-weight: 600 !important;
+                            line-height: 25px !important;
+                            text-transform: uppercase !important;
+                            padding-left: 0px !important;
+                        }
+                    }
+                }
+            }
+
+            .galley {
+                margin-left: 8.3%;
+            }
+        }
+
+        .bot-content {
+            overflow: hidden;
+
+            .description {
+                padding-left: 70px;
+                padding-top: 75px;
+                padding-right: 70px;
+            }
+        }
+    }
+}
+
+.blog-sections {
+    margin-top: 100px;
+    padding-bottom: 100px;
+
+}

@@ -1,0 +1,56 @@
+.blog-section-container {
+    .space-right-double {
+        padding-right: 20px;
+    }
+
+    .grid-hotel {
+        figure {
+            margin: 0;
+            position: relative;
+            float: left;
+            overflow: hidden;
+            height: auto;
+            background: #000;
+            text-align: center;
+            cursor: pointer;
+
+            img {
+                position: relative;
+                display: block;
+                min-height: 100%;
+                max-width: 100%;
+                opacity: 1;
+                height: auto;
+                vertical-align: middle;
+            }
+        }
+
+        .space-top {
+            padding-top: 10px;
+        }
+    }
+
+    .left-content {
+        .space-top {
+            padding-top: 18px;
+        }
+    }
+
+    .section_title {
+        h2 {
+            color: #1ba47f;
+            font-size: 17px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: #252525;
+            font-size: 23px;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding-top: 0;
+            margin-top: 0;
+        }
+    }
+}
