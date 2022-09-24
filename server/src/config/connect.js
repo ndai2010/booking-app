@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize')
 
-const sequelize = new Sequelize('booking', 'root', null, {
+const sequelize = new Sequelize('booking', 'postgres', "2010", {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'postgres'
 });
 
 let connectDB = async () => {

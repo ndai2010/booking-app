@@ -65,6 +65,7 @@ const Register = async (body) => {
 const Login = async (body) => {
     return new Promise(async (resolve, reject) => {
         try {
+            console.log(body);
             const user = await db.Users.findOne({
                 where: {
                     email: body.email

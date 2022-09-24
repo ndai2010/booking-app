@@ -1,35 +1,22 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import loginApi from "../Api/LoginAPI";
 
-const useFetch = url => {
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
+export const useFetch = () => {
+    //render value
+
+    const userLogin = async () => {
+
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true)
-            try {
-                const res = axios.get(url)
-                setData(res.data)
-            } catch (error) {
-                setError(error)
-            }
-            setLoading(false)
-        }
-        fetchData()
-    }, [url])
-
-    const reFetch = async () => {
-        setLoading(true)
         try {
-            const res = axios.get(url)
-            setData(res.data)
-        } catch (error) {
-            setError(error)
+            userLogin()
+        } catch (e) {
+            console.log(e);
         }
-        setLoading(false)
-    }
-    return { data, loading, error, reFetch }
-}
+    }, []);
 
-export default useFetch
+    return {
+
+    };
+};
