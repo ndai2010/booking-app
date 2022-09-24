@@ -1,8 +1,8 @@
 import React from 'react'
-
+import './style.scss'
 function NavBar() {
     return (
-        <div>NavBar</div>
+        <div className='nav-bar-container'></div>
     )
 }
 
