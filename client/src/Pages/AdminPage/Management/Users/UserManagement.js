@@ -3,7 +3,9 @@ import './style.scss'
 import { FaTrash } from 'react-icons/fa'
 import { MdAdd, MdSearch } from 'react-icons/md'
 import { GoSettings } from 'react-icons/go'
-import { Table } from 'reactstrap'
+import { Input, Table } from 'reactstrap'
+
+import useFetch from '../../../../Hooks/useFetch'
 function UserManagement() {
     return (
         <div className='user-manage-container'>
@@ -45,10 +47,15 @@ function UserManagement() {
                         <Table hover>
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th>
+                                        <Input type='checkbox'></Input>
+                                    </th>
+                                    <th>User name</th>
+                                    <th>Email</th>
+                                    <th>phone</th>
+                                    <th>address</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
