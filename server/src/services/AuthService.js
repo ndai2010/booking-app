@@ -2,35 +2,17 @@ import db from "../models"
 import bcrypt from 'bcryptjs'
 import Jwt from "jsonwebtoken"
 const salt = bcrypt.genSaltSync(10)
-
-const CheckEmail = async (email) => {
-    try {
-        if (email) {
-            let findEmail = await db.Users.findOne({
-                where: {
-                    email: email
-                }
-            })
-            if (findEmail) {
-                console.log('yes');
-                return false
-            } else {
-                console.log('no');
-                return true
-            }
-        } else {
-            return false
-        }
-    } catch (error) {
-        return false
-    }
-}
 const Register = async (body) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (body) {
+            if (body && body.email) {
+                const user = await db.Users.findOne({
+                    where: {
+                        email: body.email
+                    }
+                })
                 let hash = bcrypt.hashSync(body.password, salt);
-                if (CheckEmail(body.email)) {
+                if (!user) {
                     await db.Users.create({
                         username: body.username,
                         email: body.email,
@@ -48,7 +30,7 @@ const Register = async (body) => {
                 } else {
                     resolve({
                         errCode: 400,
-                        message: "Please input all field !"
+                        message: "Your email is exist!"
                     })
                 }
             } else {

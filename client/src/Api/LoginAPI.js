@@ -8,7 +8,18 @@ class Login {
                 {
                     headers: { 'Content-Type': 'application/json' }
                 })
-            console.log(res);
+            return res.data
+        } catch (error) {
+
+        }
+    }
+    Register = async (body) => {
+        try {
+            const res = await Axios.post('/register', body,
+                {
+                    headers: { 'Content-Type': 'application/json' }
+                })
+            return res.data
         } catch (error) {
 
         }
