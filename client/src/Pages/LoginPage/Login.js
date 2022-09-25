@@ -54,9 +54,11 @@ const Login = () => {
         try {
             const res = await loginApi.Login({ email, password });
             console.log(res);
+
             if (res.errCode === 0) {
                 setEmail('')
                 setPassword('')
+
             } else {
                 setPassword('')
                 toast.error(res.message)
@@ -70,15 +72,15 @@ const Login = () => {
             const res = await loginApi.Register(
                 { email, password, userName, phone, gender, avatar, country, city });
             console.log(res);
+            setEmail('')
+            setPassword('')
+            setCity('')
+            setPhone('')
+            setUserName('')
+            setCountry('')
+            setGender('')
+            setAvatar('')
             if (res.errCode === 0) {
-                setEmail('')
-                setPassword('')
-                setCity('')
-                setPhone('')
-                setUserName('')
-                setCountry('')
-                setGender('')
-                setAvatar('')
                 setIsRegister(false)
             } else {
                 toast.error(res.message)
