@@ -6,8 +6,7 @@ class Login {
         try {
             const res = await Axios.post('/login', body,
                 {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    headers: { 'Content-Type': 'application/json' }
                 })
             console.log(res);
         } catch (error) {

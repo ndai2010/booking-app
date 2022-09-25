@@ -65,23 +65,18 @@ const Register = async (body) => {
 const Login = async (body) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log(body);
             const user = await db.Users.findOne({
                 where: {
                     email: body.email
                 }
             })
-
-            const isPassword = bcrypt.compareSync(body.password, user.password)
-
-
             if (!user) {
                 resolve({
                     errCode: 400,
                     message: 'Your email is not found !'
                 })
             } else {
-
+                const isPassword = bcrypt.compareSync(body.password, user.password)
                 if (!isPassword) {
                     resolve({
                         errCode: 400,

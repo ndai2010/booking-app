@@ -40,9 +40,10 @@
             }
 
             .btn {
+                color: #ddd;
                 background-color: #29bb8a;
                 border-color: #27b183;
-
+                font-weight: 700;
                 width: 100%;
                 height: 54px;
                 padding-left: 30px;
@@ -50,7 +51,7 @@
                 border-radius: 30px;
 
                 &:hover {
-                    color: #fff;
+                    color: #ddd;
                     background-color: #27b183;
                     border-color: #25a67b;
                 }
@@ -69,8 +70,6 @@
                 border-bottom: 1px solid #ccc;
                 border-radius: 0;
                 padding: 0;
-
-
             }
 
             .form-group {
@@ -80,10 +79,11 @@
 
 
                 label {
-                    font-size: 12px;
+                    font-size: 13px;
                     display: block;
                     margin-bottom: 0;
                     color: #b3b3b3;
+                    font-weight: 600;
 
                     position: absolute;
                     top: 50%;
@@ -103,6 +103,20 @@
                 span {
                     padding: 5px 0;
                     border-bottom: 1px solid #b3b3b3;
+                }
+
+            }
+
+            .select-group {
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 50px;
+
+                label {
+                    padding: 10px 0;
+                    font-size: 13px;
+                    color: #b3b3b3;
+                    font-weight: 600;
                 }
             }
         }
