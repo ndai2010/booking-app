@@ -5,13 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from './Context/AuthReducer'
 import 'react-toastify/dist/ReactToastify.css';
-
+import store from './Redux/Stores/Store';
+import { Provider } from 'react-redux'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+  <React.StrictMode >
+    <Provider store={store}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </Provider>
   </React.StrictMode>
 );
 
