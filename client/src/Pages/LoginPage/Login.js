@@ -7,6 +7,7 @@ import googleicon from '../../assets/google-plus.png'
 import { useContext, useState, useEffect } from "react";
 import loginApi from "../../Api/LoginAPI";
 import { ToastContainer, toast } from 'react-toastify';
+import { useSelector } from "react-redux";
 
 const Login = () => {
     const [password, setPassword] = useState('')
@@ -17,9 +18,10 @@ const Login = () => {
     const [avatar, setAvatar] = useState('')
     const [gender, setGender] = useState('')
     const [country, setCountry] = useState('')
-
-
     const [isRegister, setIsRegister] = useState(false)
+
+    const AuthLogin = useSelector(state => state.loginReducer)
+    console.log(AuthLogin);
     const handleChange = (e, id) => {
         switch (id) {
             case 'email':

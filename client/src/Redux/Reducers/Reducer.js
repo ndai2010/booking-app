@@ -12,34 +12,37 @@ const LoginAuthState = {
 };
 
 const reducer = (state = LoginAuthState, action) => {
-    // switch (action.type) {
-    //     case FATCH_LOGIN_AUTH_REQUEST: {
-    //         return {
-    //             ...state,
-    //             Loading: true,
-    //             isUserAuthenticate : false,
-    //         };
-    //     }
-    //     case FATCH_LOGIN_AUTH_SUCCESS: {
-    //         return {
-    //             ...state,
-    //             Response: action.payload,
-    //             Error: '',
-    //             isUserAuthenticate : true,
-    //         };
-    //     }
-    //     case FATCH_LOGIN_AUTH_FAILURE: {
-    //         return {
-    //             ...state,
-    //             Error: action.payload,
-    //              Response : {},
-    //              isUserAuthenticate : false,
-    //         };
-    //     }
-    //     default: {
-    //         return state;
-    //     }
-    // }
+    switch (action.type) {
+        case FATCH_LOGIN_AUTH_REQUEST: {
+            console.log(state);
+            return {
+                ...state,
+                Loading: true,
+                isUserAuthenticate: false,
+            };
+        }
+        case FATCH_LOGIN_AUTH_SUCCESS: {
+            console.log(state);
+            return {
+                ...state,
+                Response: action.payload,
+                Error: '',
+                isUserAuthenticate: true,
+            };
+        }
+        case FATCH_LOGIN_AUTH_FAILURE: {
+            console.log(state);
+            return {
+                ...state,
+                Error: action.payload,
+                Response: {},
+                isUserAuthenticate: false,
+            };
+        }
+        default: {
+            return state;
+        }
+    }
 };
 
 export default reducer;
