@@ -12,7 +12,7 @@ let webRoutes = (app) => {
     router.delete('/delete-hotel', verifyTAdmin, HomeController.DeleteHotel)
     router.get('/get-all-hotel', verifyUser, HomeController.GetAllHotels)
 
-    router.post('/create-user', verifyTAdmin, UserController.CreateNewHotel)
+    router.post('/create-user', verifyTAdmin, UserController.CreatUser)
     router.post('/update-user', verifyTAdmin, UserController.UpdateHotel)
     router.delete('/delete-user', verifyTAdmin, UserController.DeleteHotel)
     router.get('/get-all-user', verifyTAdmin, UserController.GetAllUser)

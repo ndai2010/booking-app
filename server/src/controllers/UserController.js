@@ -1,8 +1,8 @@
 
 import UserService from '../services/UserService'
-const CreateNewHotel = async (req, res) => {
+const CreatUser = async (req, res) => {
     try {
-        const mess = await UserService.CreateNewHotel(req.body)
+        const mess = await UserService.CreatUser(req.body)
         return res.status(200).json(mess)
     } catch (e) {
         console.log(e);
@@ -35,7 +35,7 @@ const GetAllUser = async (req, res, next) => {
 }
 
 module.exports = {
-    CreateNewHotel: CreateNewHotel,
+    CreatUser: CreatUser,
     UpdateHotel: UpdateHotel,
     GetAllUser: GetAllUser,
     DeleteHotel: DeleteHotel

@@ -4,11 +4,12 @@ import faceicon from '../../assets/facebook.png'
 import twiticon from '../../assets/twitter.png'
 import googleicon from '../../assets/google-plus.png'
 
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { fatchLoginAuthRequest } from '../../Redux/Actions/Actions'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 const Login = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
@@ -53,40 +54,24 @@ const Login = () => {
                 break;
         }
     };
-
     useEffect(() => {
-        if (AuthLogin.Response.token && AuthLogin.isAdmin === true) {
+        if (localStorage.getItem('accessToken') && AuthLogin.isAdmin === true) {
             navigate('/admin')
         }
-        else if (AuthLogin.Response.token && !AuthLogin.isAdmin) {
+        else if (localStorage.getItem('accessToken') && !AuthLogin.isAdmin) {
             navigate('/')
         }
     }, [AuthLogin])
     const login = async () => {
         dispatch(fatchLoginAuthRequest(email, password));
 
-        // if (res.errCode === 0) {
-        //     setEmail('')
-        //     setPassword('')
-
-        // } else {
-        //     setPassword('')
-        //     toast.error(res.message)
-        // }
     }
     const register = async () => {
         try {
             // const res = await loginApi.Register(
             //     { email, password, userName, phone, gender, avatar, country, city });
             // console.log(res);
-            setEmail('')
-            setPassword('')
-            setCity('')
-            setPhone('')
-            setUserName('')
-            setCountry('')
-            setGender('')
-            setAvatar('')
+
             // if (res.errCode === 0) {
             //     setIsRegister(false)
             // } else {
@@ -99,6 +84,14 @@ const Login = () => {
     }
     const handleClick = (e, id) => {
         e.preventDefault();
+        setEmail('')
+        setPassword('')
+        setCity('')
+        setPhone('')
+        setUserName('')
+        setCountry('')
+        setGender('')
+        setAvatar('')
         id === 'login' ? login() : register()
     };
     return (

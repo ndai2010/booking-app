@@ -7,7 +7,8 @@ import {
 const LoginAuthState = {
     Response: {},
     Error: '',
-    Loading: true
+    Loading: true,
+    user: localStorage.getItem('user') || null
 };
 
 const reducer = (state = LoginAuthState, action) => {
@@ -16,7 +17,6 @@ const reducer = (state = LoginAuthState, action) => {
             return {
                 ...state,
                 Loading: true,
-                isUserAuthenticate: false,
             };
         }
         case FATCH_LOGIN_AUTH_SUCCESS: {

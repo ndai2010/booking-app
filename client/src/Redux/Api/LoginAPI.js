@@ -3,7 +3,9 @@ export const Login = async (body) => {
     try {
         const res = await Axios.post('/login', body,
             {
-                headers: { 'Content-Type': 'application/json' }
+                headers: {
+                    'Content-Type': 'application/json',
+                }
             })
         if (res && res.data) {
             return res.data

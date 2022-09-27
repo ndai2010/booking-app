@@ -7,7 +7,8 @@ function* fatchLoginSaga(action) {
         const userAuth = yield call(Login, action.payload);
         if (userAuth.errCode === 0) {
             localStorage.setItem('accessToken', userAuth.token);
-            yield put(fatchLoginAuthSuccess(userAuth));
+            localStorage.setItem('user', JSON.stringify(userAuth.user));
+            yield put(fatchLoginAuthSuccess(userAuth.user));
         }
         else {
             yield put(fatchLoginAuthFailure(userAuth.message));

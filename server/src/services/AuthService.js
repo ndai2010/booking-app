@@ -69,10 +69,17 @@ const Login = async (body) => {
                         const token = Jwt.sign({
                             id: user.id, isAdmin: user.isAdmin
                         }, process.env.JWT)
+
                         resolve({
                             token: token,
                             errCode: 0,
-                            isAdmin: user.isAdmin,
+                            user: {
+                                username: user.username,
+                                id: user.id,
+                                avatar: user.img,
+                                email: user.email,
+                                isAdmin: user.isAdmin
+                            },
                             message: 'Login is success !'
                         })
                     }
