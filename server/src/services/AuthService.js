@@ -47,35 +47,42 @@ const Register = async (body) => {
 const Login = async (body) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const user = await db.Users.findOne({
-                where: {
-                    email: body.email
-                }
-            })
-            if (!user) {
-                resolve({
-                    errCode: 400,
-                    message: 'Your email is not found !'
+            if (body.email && body.password) {
+                const user = await db.Users.findOne({
+                    where: {
+                        email: body.email
+                    }
                 })
-            } else {
-                const isPassword = bcrypt.compareSync(body.password, user.password)
-                if (!isPassword) {
+                if (!user) {
                     resolve({
                         errCode: 400,
-                        message: 'Wrong password!'
+                        message: 'Your email is not found !'
                     })
                 } else {
-                    const token = Jwt.sign({
-                        id: user.id, isAdmin: user.isAdmin
-                    }, process.env.JWT)
-                    resolve({
-                        token: token,
-                        errCode: 0,
-                        message: 'Login is success !'
-                    })
+                    const isPassword = bcrypt.compareSync(body.password, user.password)
+                    if (!isPassword) {
+                        resolve({
+                            errCode: 400,
+                            message: 'Wrong password!'
+                        })
+                    } else {
+                        const token = Jwt.sign({
+                            id: user.id, isAdmin: user.isAdmin
+                        }, process.env.JWT)
+                        resolve({
+                            token: token,
+                            errCode: 0,
+                            isAdmin: user.isAdmin,
+                            message: 'Login is success !'
+                        })
+                    }
                 }
+            } else {
+                resolve({
+                    errCode: 400,
+                    message: 'Please input all field !'
+                })
             }
-
         } catch (e) {
             console.log(e);
         }

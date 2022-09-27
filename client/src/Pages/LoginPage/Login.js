@@ -5,10 +5,10 @@ import twiticon from '../../assets/twitter.png'
 import googleicon from '../../assets/google-plus.png'
 
 import { useContext, useState, useEffect } from "react";
-import loginApi from "../../Api/LoginAPI";
 import { ToastContainer, toast } from 'react-toastify';
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fatchLoginAuthRequest } from '../../Redux/Actions/Actions'
+import { useLocation, useNavigate } from 'react-router-dom'
 const Login = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
@@ -21,7 +21,8 @@ const Login = () => {
     const [isRegister, setIsRegister] = useState(false)
 
     const AuthLogin = useSelector(state => state.loginReducer)
-    console.log(AuthLogin);
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleChange = (e, id) => {
         switch (id) {
             case 'email':
@@ -52,28 +53,32 @@ const Login = () => {
                 break;
         }
     };
-    const login = async () => {
-        try {
-            const res = await loginApi.Login({ email, password });
-            console.log(res);
 
-            if (res.errCode === 0) {
-                setEmail('')
-                setPassword('')
-
-            } else {
-                setPassword('')
-                toast.error(res.message)
-            }
-        } catch (error) {
-            console.log(error);
+    useEffect(() => {
+        if (AuthLogin.Response.token && AuthLogin.isAdmin === true) {
+            navigate('/admin')
         }
+        else if (AuthLogin.Response.token && !AuthLogin.isAdmin) {
+            navigate('/')
+        }
+    }, [AuthLogin])
+    const login = async () => {
+        dispatch(fatchLoginAuthRequest(email, password));
+
+        // if (res.errCode === 0) {
+        //     setEmail('')
+        //     setPassword('')
+
+        // } else {
+        //     setPassword('')
+        //     toast.error(res.message)
+        // }
     }
     const register = async () => {
         try {
-            const res = await loginApi.Register(
-                { email, password, userName, phone, gender, avatar, country, city });
-            console.log(res);
+            // const res = await loginApi.Register(
+            //     { email, password, userName, phone, gender, avatar, country, city });
+            // console.log(res);
             setEmail('')
             setPassword('')
             setCity('')
@@ -82,11 +87,11 @@ const Login = () => {
             setCountry('')
             setGender('')
             setAvatar('')
-            if (res.errCode === 0) {
-                setIsRegister(false)
-            } else {
-                toast.error(res.message)
-            }
+            // if (res.errCode === 0) {
+            //     setIsRegister(false)
+            // } else {
+            //     toast.error(res.message)
+            // }
         } catch (error) {
             console.log(error);
         }

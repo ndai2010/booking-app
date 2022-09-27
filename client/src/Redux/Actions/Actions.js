@@ -2,14 +2,14 @@ import {
     FATCH_LOGIN_AUTH_REQUEST,
     FATCH_LOGIN_AUTH_SUCCESS,
     FATCH_LOGIN_AUTH_FAILURE,
-} from '../constants/ActionConst';
+} from '../Constants/ActionConst';
 
 export const fatchLoginAuthRequest = (email, password) => {
     return {
         type: FATCH_LOGIN_AUTH_REQUEST,
         payload: {
-            username : email,
-            password : password,
+            email: email,
+            password: password,
         },
     };
 };

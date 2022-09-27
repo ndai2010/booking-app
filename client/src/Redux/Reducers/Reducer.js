@@ -5,16 +5,14 @@ import {
 } from '../Constants/ActionConst';
 
 const LoginAuthState = {
-    isUserAuthenticate: false,
     Response: {},
     Error: '',
-    Loading: true,
+    Loading: true
 };
 
 const reducer = (state = LoginAuthState, action) => {
     switch (action.type) {
         case FATCH_LOGIN_AUTH_REQUEST: {
-            console.log(state);
             return {
                 ...state,
                 Loading: true,
@@ -22,21 +20,18 @@ const reducer = (state = LoginAuthState, action) => {
             };
         }
         case FATCH_LOGIN_AUTH_SUCCESS: {
-            console.log(state);
             return {
                 ...state,
                 Response: action.payload,
                 Error: '',
-                isUserAuthenticate: true,
+                isAdmin: action.payload.isAdmin,
             };
         }
         case FATCH_LOGIN_AUTH_FAILURE: {
-            console.log(state);
             return {
                 ...state,
                 Error: action.payload,
                 Response: {},
-                isUserAuthenticate: false,
             };
         }
         default: {
