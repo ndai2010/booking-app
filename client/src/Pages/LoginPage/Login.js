@@ -58,13 +58,13 @@ const Login = () => {
         if (localStorage.getItem('accessToken') && AuthLogin.isAdmin === true) {
             navigate('/admin')
         }
-        else if (localStorage.getItem('accessToken') && !AuthLogin.isAdmin) {
+        else if (localStorage.getItem('accessToken') && AuthLogin.isAdmin === false) {
             navigate('/')
         }
+        console.log(AuthLogin);
     }, [AuthLogin])
     const login = async () => {
         dispatch(fatchLoginAuthRequest(email, password));
-
     }
     const register = async () => {
         try {

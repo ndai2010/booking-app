@@ -15,7 +15,7 @@ let webRoutes = (app) => {
     router.post('/create-user', verifyTAdmin, UserController.CreatUser)
     router.post('/update-user', verifyTAdmin, UserController.UpdateHotel)
     router.delete('/delete-user', verifyTAdmin, UserController.DeleteHotel)
-    router.get('/get-all-user', verifyTAdmin, UserController.GetAllUser)
+    router.get('/get-all-user', UserController.GetAllUser)
 
     router.post('/register', AuthController.Register)
     router.post('/login', AuthController.Login)

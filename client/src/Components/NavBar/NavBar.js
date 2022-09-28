@@ -10,6 +10,11 @@ function NavBar() {
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem('user')))
     }, [])
+    const LogOut = () => {
+        localStorage.removeItem('user')
+        localStorage.removeItem('accessToken')
+        setUser('')
+    }
     return (
         <div className='navbar-container'>
             <div className='content container'>
@@ -17,21 +22,19 @@ function NavBar() {
                     <GoThreeBars className='icon' />
                     <h3>Logo</h3>
                 </div>
-                {/* <div className=''></div> */}
                 {
-                    user ?
+                    user !== '' ?
                         (<div className='user-container'>
-                            <div className='avatar'><AiOutlineUser className='icon' /></div>
-                            <div className='name'>{user.email}</div>
-                            <div className='menu-list'>
-                                <ul>
-                                    <li className='profile'>profile</li>
-                                    <li className='log-out'>Log out</li>
-                                </ul>
+                            <div className='avatar'><AiOutlineUser className='icon' />
+                                <div className='menu-list'>
+                                    <ul>
+                                        <li className='profile'>profile</li>
+                                        <li onClick={() => LogOut()} className='log-out'>Log out</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>) :
                         (<div className='login-group'>
-                            {/* <div className='avatar'>avatar</div> */}
                             <Link to={'/login'}>
                                 <div className='login-btn btn'>Đăng nhập</div>
                                 <div className='register btn'>Đăng ký</div>
