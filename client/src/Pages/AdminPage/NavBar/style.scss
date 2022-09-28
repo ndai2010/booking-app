@@ -1,4 +1,119 @@
 .nav-bar-container {
-    height: 80px;
     border-bottom: 1px solid #ddd;
+    padding: 0 15px;
+
+    .search-box {
+        margin-top: 2.5px;
+
+        .form-control {
+            padding-left: 25px;
+            background-color: #F3F3F9;
+
+            &:focus {
+                box-shadow: none;
+                border-color: #ced4da;
+            }
+        }
+
+        position: relative;
+
+        .icon {
+            position: absolute;
+            top: 10px;
+            left: 18px;
+            color: #ced4da;
+        }
+    }
+
+    .info-group {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: flex-end;
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            align-content: center;
+
+            .icon {
+                margin-top: 12px;
+                font-size: 22px;
+                color: #697077;
+            }
+
+            .box {
+                text-align: center;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                cursor: pointer;
+
+                &:hover {
+                    color: #3577f1 !important;
+                    background-color: rgba(53, 119, 241, .1) !important;
+                }
+            }
+        }
+
+        .info-user-box {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #F3F3F9;
+            position: relative;
+            cursor: pointer;
+
+            .avatar {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                text-align: center;
+                background-color: #a8a8b6;
+
+                .icon {
+                    margin-top: 10px;
+                    color: #697077 !important;
+                }
+            }
+
+            .desciption {
+                padding-left: 10px;
+            }
+
+            .drop-down {
+                position: absolute;
+                top: 65px;
+                background-color: white;
+                width: 150px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                border-radius: 5px;
+
+                ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        padding: 5px 20px;
+                        cursor: pointer;
+                        text-align: start;
+                        color: #697077;
+
+                        &:hover {
+                            background-color: #F3F3F9;
+                        }
+
+                        .icon {
+                            margin-right: 5px;
+                            margin-bottom: 3px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
 }

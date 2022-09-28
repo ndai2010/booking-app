@@ -17,7 +17,6 @@ function NavBar() {
     useEffect(() => {
         setUser(AuthLogin)
     }, [AuthLogin])
-    console.log(user);
     return (
         <div className='navbar-container'>
             <div className='content container'>
