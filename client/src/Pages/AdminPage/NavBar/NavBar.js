@@ -6,11 +6,16 @@ import { CgDarkMode, CgBell } from 'react-icons/cg'
 import { FaUserAlt, FaUserCircle } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { fatchLogoutAuth } from '../../../Redux/Actions/Actions'
+import { useNavigate } from 'react-router-dom'
+
 
 function NavBar() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const LogOut = () => {
         dispatch(fatchLogoutAuth());
+        navigate('/')
     }
     const [isOpen, setIsOpen] = useState(false)
     return (
@@ -44,7 +49,7 @@ function NavBar() {
                                             <MdMessage className='icon' />
                                             <span>Messages</span>
                                         </li>
-                                        <li onClick={LogOut()}>
+                                        <li onClick={() => LogOut()}>
                                             <FiLogOut className='icon' />
                                             <span>Logout</span>
                                         </li>
