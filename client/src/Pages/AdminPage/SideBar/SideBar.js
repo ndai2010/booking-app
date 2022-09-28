@@ -15,7 +15,9 @@ function SideBar() {
     return (
         <div className='side-bar container'>
             <div className='header'>
-                <h2>LOGO</h2>
+                <Link to='/'>
+                    <h2>LOGO</h2>
+                </Link>
             </div>
             <div className='side-bar-content'>
                 <ul className='list'>

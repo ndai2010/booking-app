@@ -2,13 +2,12 @@ import {
     FATCH_LOGIN_AUTH_REQUEST,
     FATCH_LOGIN_AUTH_SUCCESS,
     FATCH_LOGIN_AUTH_FAILURE,
+    FATCH_LOGOUT_AUTH,
 } from '../Constants/ActionConst';
 
 const LoginAuthState = {
     Response: {},
-    Error: '',
-    Loading: true,
-    user: localStorage.getItem('user') || null
+    isAdmin: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).isAdmin : false
 };
 
 const reducer = (state = LoginAuthState, action) => {
@@ -23,7 +22,6 @@ const reducer = (state = LoginAuthState, action) => {
             return {
                 ...state,
                 Response: action.payload,
-                Error: '',
                 isAdmin: action.payload.isAdmin,
             };
         }
@@ -32,6 +30,12 @@ const reducer = (state = LoginAuthState, action) => {
                 ...state,
                 Error: action.payload,
                 Response: {},
+            };
+        }
+        case FATCH_LOGOUT_AUTH: {
+            return {
+                ...state,
+                Response: {}
             };
         }
         default: {

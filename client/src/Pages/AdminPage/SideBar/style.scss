@@ -1,4 +1,9 @@
 .side-bar {
+    a {
+        text-decoration: none !important;
+        color: #abb9e8 !important;
+    }
+
     background-color: #405189;
     color: #abb9e8;
 
@@ -21,10 +26,7 @@
             padding: 0;
             margin-left: 20px;
 
-            a {
-                text-decoration: none !important;
-                color: #abb9e8 !important;
-            }
+
 
             li {
                 margin: 0;
