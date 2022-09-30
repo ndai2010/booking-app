@@ -13,6 +13,8 @@ const LoginAuthState = {
 const reducer = (state = LoginAuthState, action) => {
     switch (action.type) {
         case FATCH_LOGIN_AUTH_REQUEST: {
+
+            console.log('heloo');
             return {
                 ...state,
                 Loading: true,

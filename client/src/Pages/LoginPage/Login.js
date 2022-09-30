@@ -61,7 +61,6 @@ const Login = () => {
         else if (localStorage.getItem('accessToken') && AuthLogin.isAdmin === false) {
             navigate('/')
         }
-        console.log(AuthLogin);
     }, [AuthLogin])
     const login = async () => {
         dispatch(fatchLoginAuthRequest(email, password));

@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.scss'
-import { FaTrash } from 'react-icons/fa'
+import { FaTrash, FaPencilAlt } from 'react-icons/fa'
 import { MdAdd, MdSearch } from 'react-icons/md'
 import { GoSettings } from 'react-icons/go'
 import { Input, Table } from 'reactstrap'
 
-import useFetch from '../../../../Hooks/useFetch'
+import { fatchGetAllRequest } from '../../../../Redux/Actions/UserAction'
+import { useDispatch, useSelector } from 'react-redux'
 function UserManagement() {
+    const dispatch = useDispatch()
+    const users = useSelector(state => state.UserReducer)
+
+    useEffect(() => {
+        dispatch(fatchGetAllRequest())
+        console.log(users);
+    }, [])
+    const AddUser = () => {
+    }
+    const actionEditUser = (data) => {
+        console.log(data);
+    }
+    const actionDeleteUser = (id) => {
+        console.log(id);
+    }
     return (
         <div className='user-manage-container'>
             <div className='manage-content'>
@@ -18,7 +34,7 @@ function UserManagement() {
                         <div className='delete-button'>
                             <FaTrash className='icon' />
                         </div>
-                        <div className='add-button'>
+                        <div className='add-button' onClick={() => AddUser()}>
                             <MdAdd className='icon' />
                             <span>add user</span>
                         </div>
@@ -59,24 +75,27 @@ function UserManagement() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                {
+                                    users && users.data && users.data.length > 0 &&
+                                    users.data.map((item, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <th scope="row"><Input type='checkbox'></Input></th>
+                                                <td>{item.username}</td>
+                                                <td>{item.email}</td>
+                                                <td>{item.phone}</td>
+                                                <td>{`${item.city}, ${item.country}`}</td>
+                                                <td>{item.isAdmin ? 'Admin' : 'Customer'}</td>
+                                                <td>
+                                                    <div className='action-button'>
+                                                        <FaPencilAlt className='icon edit-btn' onClick={() => actionEditUser(item)} />
+                                                        <FaTrash className='icon trash-btn' onClick={() => actionDeleteUser(item.id)} />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
                             </tbody>
                         </Table>
                         <nav aria-label="...">
